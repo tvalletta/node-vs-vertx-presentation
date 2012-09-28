@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Node.js vs. Vert.x</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="Thomas A. Valletta" />
+        <meta name="author" content="Gabriel Dayley" />
+        <link href="css/impress.css" rel="stylesheet" />
+        <script type="text/javascript" src='js/jquery-1.8.2.min.js'></script>
+    </head>
+    <body>
+		<p class="fallback-message">
+		    Your browser doesn't support impress.js.  Try Chrome or Safari.
+		</p>
+		<div id="impress">
+			<div id="title" class="step" data-x="600" data-y="0" data-z="-500" data-rotate-y="-75">
+			    <h1>Node.js vs. Vert.x</h1>
+			    <h4>By Mike Heath &amp; Thomas A. Valletta</h4>
+			</div>
+			<div class="step" data-x="0" data-y="0" data-z="0">
+				<h2>Intro</h2>
+			</div>
+			<div class="step" data-x="50" data-y="100" data-z="-100">
+				<h4>Mike Heath</h4>
+			</div>
+			<div class="step" data-x="50" data-y="200" data-z="-100">
+				<h4>Thomas A. Valletta</h4>
+			</div>
+			<div class="step" data-x="0" data-y="800" data-z="">
+				<h2>Node.js</h2>
+			</div>
+			<div class="step" data-x="0" data-y="1100" data-z="">
+				
+			</div>
+			<div class="step" data-x="-100" data-y="1027" data-z="-800" data-scale=".8" data-focus='javascript'>
+				
+			</div>
+			<div class="step invisible right" data-x="120" data-y="1027" data-z="-800" data-scale=".8" data-rotate-y='-75'>
+				<h2>Something</h2>
+			</div>
+			<div class="step invisible" data-x="-420" data-y="990" data-z="-780" data-scale=".03" data-rotate-y="100" data-rotate-z="-90">
+				<img src='img/JavaScript-logo-600x600.png'/>
+			</div>
+			<div class="step" data-x="-100" data-y="1100" data-z="-800" data-scale=".8" data-focus='v8'>
+				
+			</div>
+			<div class="step" data-x="-100" data-y="1173" data-z="-800" data-scale=".8" data-focus='modules'>
+				
+			</div>
+			<div class="step" data-x="-100" data-y="1246" data-z="-800" data-scale=".8" data-focus='adoption'>
+				
+			</div>
+			<div class="step clarify" data-x="0" data-y="1100" data-z="-800">
+		    	<ul>
+		    		<li class='focus' data-focus-id='javascript'>JavaScript</li>
+		    		<li class='focus' data-focus-id='v8'>V8</li>
+		    		<li class='focus' data-focus-id='modules'>modules</li>
+		    		<li class='focus' data-focus-id='adoption'>adoption</li>
+		    	</ul>
+			</div>
+			<div class="step" data-x="" data-y="3400" data-z="0">
+				
+			</div>
+
+ 			<div class="step invisible" data-x="-250" data-y="300" data-rotate-x="20" data-rotate-y="-50" data-rotate-z="70" data-scale="1">
+			    <br/><br/><br/><br/><br/>
+			    <h6>Thanks!</h6>
+			</div>
+		</div>
+    <script type="text/javascript" src="js/impress.js"></script>
+    <script>
+    	var el = document.getElementById("impress");
+    	impress().init();
+
+    	var focusList = [];
+
+    	el.addEventListener("impress:stepenter", function (event) {
+    		var focus = $(event.target).attr('data-focus');
+    		if (focus) {
+    			var $target = $('.focus[data-focus-id="' + focus + '"]');
+    			if ($target[0]) {
+	    			$target.addClass('clarify');
+	    			focusList.push($target);
+    			}
+    		}
+        }, false);
+
+    	el.addEventListener("impress:stepleave", function (event) {
+    		for (var i = 0, cnt = focusList.length; i < cnt; i++) {
+    			focusList[i].removeClass('clarify');
+    		}
+    		focusList = [];
+        }, false);
+
+    </script>
+    </body>
+</html>
