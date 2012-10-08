@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <title>Vert.x</title>
+    <meta name="author" content="Mike Heath" />
+    <link href="css/impress.css" rel="stylesheet" />
+    <script type="text/javascript" src='js/jquery-1.8.2.min.js'></script>
+</head>
+<body>
+
+    <p class="fallback-message">
+        Your browser doesn't support impress.js.  Try using a browser that doesn't suck.
+    </p>
+
+
+    <div id="impress">
+        <div id="title" class="step" data-x="0" data-y="0">
+            <h1>Vert.x</h1>
+            <h4>Polyglot evented I/O</h4>
+        </div>
+
+        <div id="ryan-dahl-quote" class="step" data-x="1000" data-y="0">
+            <q>
+                I want programming computers to be like coloring with crayons and playing with duplo blocks. If my
+                job was keeping Twitter up, of course I'd [be] using a robust technology like the JVM.
+            </q>
+        </div>
+
+        <div id="ryan-dahl-attribution" class="step" data-x="1300" data-y="300">
+            <p>
+                Ryan Dahl, creator of Node.js
+                <br/>&gt;<a href="http://bit.ly/Wviu8J">http://bit.ly/Wviu8J</a>
+            </p>
+        </div>
+        <div id="vertx-overview" class="step" data-x="0" data-y="1000">
+            <h2>What is Vert.x?</h2>
+            <ul>
+                <li>Similar to event-driven frameworks like Node.js</li>
+                <li>Runs on the JVM - real concurrency and unrivalled performance</li>
+                <li>Built on Netty - Fast and scalable</li>
+                <li>Polyglot - Support multiple programming languages</li>
+            </ul>
+        </div>
+        <div id="demo" class="step" data-x="-1000" data-y="1000" data-rotate="270" data-scale="2">
+            <h2>Demo</h2>
+        </div>
+        <div id="tom-dale-quote" class="step" data-x="1000" data-y="2000">
+            <q>
+                JavaScript ended up in the browser, but I want no part in propagating this happy accident to the server.
+            </q>
+        </div>
+        <div id="tom-dale-attribution" class="step" data-x="1300" data-y="2300">
+            <q>
+                Tom Dale, Ember.js contributor (@tomdale)
+                <br/>&gt;Throne of JS conference, 2012
+            </q>
+        </div>
+        <div id="polyglot" class="step" data-x="0" data-y="2000">
+            <h2>Vert.x works out of the box with:</h2>
+            <ul>
+                <li>CoffeeScript</li>
+                <li>Groovy</li>
+                <li>Java</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>Ruby</li>
+            </ul>
+        </div>
+        <div id="polyglot-more" class="step" data-x="0" data-y="3000">
+            <h2>Third-party integrations available for:</h2>
+            <ul>
+                <li>Ceylon</li>
+                <li>Clojure (Lisp)</li>
+                <li>Kotlin</li>
+                <li>Scala</li>
+                <li>...and more. If it runs on the JVM, it can work with Vert.x.</li>
+            </ul>
+        </div>
+        <div id="demo2" class="step" data-x="-1000" data-y="1000" data-rotate="270" data-scale="2">
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/impress.js"></script>
+    <script>
+        var el = document.getElementById("impress");
+        impress().init();
+
+        var focusList = [];
+
+        el.addEventListener("impress:stepenter", function (event) {
+            var focus = $(event.target).attr('data-focus');
+            if (focus) {
+                var $target = $('.focus[data-focus-id="' + focus + '"]');
+                if ($target[0]) {
+                    $target.addClass('clarify');
+                    focusList.push($target);
+                }
+            }
+        }, false);
+
+        el.addEventListener("impress:stepleave", function (event) {
+            for (var i = 0, cnt = focusList.length; i < cnt; i++) {
+                focusList[i].removeClass('clarify');
+            }
+            focusList = [];
+        }, false);
+
+    </script>
+
+</body>
+</html>

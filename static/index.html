@@ -4,9 +4,15 @@
         <title>Node.js vs. Vert.x</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="author" content="Thomas A. Valletta" />
-        <meta name="author" content="Gabriel Dayley" />
+        <meta name="author" content="Mike Heath" />
         <link href="css/impress.css" rel="stylesheet" />
         <script type="text/javascript" src='js/jquery-1.8.2.min.js'></script>
+        <style type="text/css">
+            table, th, td
+            {
+                border: 1px solid black;
+            }
+        </style>
     </head>
     <body>
 		<p class="fallback-message">
@@ -58,11 +64,71 @@
 		    		<li class='focus' data-focus-id='adoption'>adoption</li>
 		    	</ul>
 			</div>
-			<div class="step" data-x="" data-y="3400" data-z="0">
-				
+			<div class="step" data-x="0" data-y="3400">
+				<h1>Let's fight!</h1>
 			</div>
 
- 			<div class="step invisible" data-x="-250" data-y="300" data-rotate-x="20" data-rotate-y="-50" data-rotate-z="70" data-scale="1">
+            <div class="step" data-x="1000" data-y="3400">
+                <h2>Reliability</h2>
+            </div>
+
+            <div class="step" data-x="2000" data-y="3400">
+                <h3>Sample of Apps Running on Private Cloud Foundry Deployment</h3>
+                <table>
+                    <tr>
+                        <td>Technology</td>
+                        <td>Number of Apps</td>
+                        <td>Number of Servers</td>
+                        <td>Number of crashes over 30 days</td>
+                    </tr>
+                    <tr>
+                        <td>Ruby on Rails</td>
+                        <td>12</td>
+                        <td>32</td>
+                        <td>19</td>
+                    </tr>
+                    <tr>
+                        <td>Ruby on Rails (JRuby and Tomcat)</td>
+                        <td>4</td>
+                        <td>20</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Node.js</td>
+                        <td>6</td>
+                        <td>12</td>
+                        <td>58</td>
+                    </tr>
+                </table>
+                <p>*<b>Source:</b> vcap-dev mailing list</p>
+            </div>
+
+            <div class="step" data-x="1000" data-y="4400">
+                <h2>Community</h2>
+            </div>
+
+            <div class="step" data-x="2000" data-y="4400">
+                <h3>Everyone has heard of Node.js, Vert.x sits quietly in its own little corner of the Internet</h3>
+            </div>
+
+            <div class="step" data-x="1000" data-y="5400">
+                <h2>Performance</h2>
+            </div>
+
+            <div class="step" data-x="2000" data-y="5400">
+                <h3>Netty is still faster than Node. Vert.x runs on Netty.</h3>
+            </div>
+
+            <div class="step" data-x="1000" data-y="6400">
+                <h2>Non-blocking code</h2>
+            </div>
+
+            <div class="step" data-x="2000" data-y="6400">
+                <h3>Everything in Node is non-blocking (except the things that aren't). Good luck finding good
+                non-blocking libraries for Vert.x</h3>
+            </div>
+
+            <div class="step invisible" data-x="-250" data-y="300" data-rotate-x="20" data-rotate-y="-50" data-rotate-z="70" data-scale="1">
 			    <br/><br/><br/><br/><br/>
 			    <h6>Thanks!</h6>
 			</div>
