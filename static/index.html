@@ -219,7 +219,7 @@ s.listen(8089);
 			</div>
 			<div class="step" data-x="0" data-y="2000">
 				<h2>Now a little about...</h2>
-				<h4>...some other technology whos name I have forgotten</h4>
+				<h4>...some other technology whose name I have forgotten</h4>
 			</div>
 			<div class="step" data-x="0" data-y="3400">
 				<h1>Let's fight!</h1>
@@ -273,7 +273,33 @@ s.listen(8089);
             </div>
 
             <div class="step" data-x="2000" data-y="5400">
-                <img src="img/chart_1.png" />
+                <h3>Vert.x is faster. There are plenty of benchmarks that show this.</h3>
+            </div>
+
+            <div class="step" data-x="3000" data-y="5400">
+                <h3>However, V8 is MUCH faster than Rhino, the JavaScript parser in Vert.x.</h3>
+            </div>
+
+            <div class="step" data-x="4000" data-y="5400">
+                <h3>Nashorn compiles JavaScript to Java byte-code, 10x faster than Rhino.</h3>
+                <h4>Will be open sourced December 6.</h4>
+            </div>
+
+            <div class="step" data-x="5000" data-y="5400">
+		<h3>For most cases performance doesn't matter as much as we think it does.</h3>
+	    </div>
+
+            <div class="step" data-x="6000" data-y="5400">
+                <h3>For the cases where performance matters, Vert.x give you more choices.</h3>
+                <h4>You're not limited to JavaScript.</h4>
+            </div>
+
+            <div class="step" data-x="7000" data-y="5400">
+                <h2>It's easier to fix performance than it is to fix ugly.</h2>
+            </div>
+
+            <div class="step" data-x="8000" data-y="5400">
+                <h2>The JVM comes with legacy cruft and a big memory footprint. Vert.x can't fix this.</h2>
             </div>
 
             <div class="step" data-x="1000" data-y="6400">
@@ -281,8 +307,45 @@ s.listen(8089);
             </div>
 
             <div class="step" data-x="2000" data-y="6400">
-                <h3>Everything in Node is non-blocking (except the things that aren't). Good luck finding good
-                non-blocking libraries for Vert.x</h3>
+                <h3>Node is built from the ground-up to be non-blocking.</h3>
+		<h3>Everything in Node is non-blocking (except the things that aren't).</h3>
+                <h3>Good luck finding good non-blocking libraries for Vert.x</h3>
+            </div>
+
+            <div class="step" data-x="3000" data-y="6400">
+                <h3>Vert.x can still use blocking code.</h3>
+                <h3>The JVM is a multi-threaded runtime. Push the blocking to another thread</h3>
+            </div>
+
+            <div class="step" data-x="4000" data-y="6400">
+<pre class='prettyprint lang-js' style='font-size: 20px'>
+load('vertx.js')
+
+var threadPool = java.util.concurrent.Executors.newCachedThreadPool();
+
+vertx.createHttpServer().requestHandler(function(req) {
+    req.response.putHeader('Content-type', 'text/plain;UTF-8');
+
+    threadPool.execute(function() {
+        var TwitterFactory = twitter4j.TwitterFactory;
+        var Query          = twitter4j.Query;
+
+        var twitter = new TwitterFactory().instance;
+        var query   = new Query("vertx");
+        query.count = 100;
+
+        do {
+	    var result = twitter.search(query);
+            var tweets = result.tweets;
+
+            for each (tweet in tweets) {
+                request.send("@" + tweet.user.screenName + " -- " + tweet.text + "\n);
+            }
+        } while (query = result.nextQuery());
+        req.response.end();
+    });
+}).listen(8080);
+</pre>
             </div>
 
             <div class="step invisible" data-x="-250" data-y="300" data-rotate-x="20" data-rotate-y="-50" data-rotate-z="70" data-scale="1">
